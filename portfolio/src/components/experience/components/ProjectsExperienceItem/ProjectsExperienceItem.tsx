@@ -68,6 +68,7 @@ const ProjectsExperienceItem = ({
 
   return (
     <div
+      data-id="experience-item"
       onClick={handleClick}
       ref={ref}
       className={classNames([

@@ -56,10 +56,9 @@ const Hero = () => {
               Front-end developer
             </div>
             <div ref={descriptionRef} className={styles.hero__description}>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Est
-              tempora nisi distinctio ad? Alias sed animi quam dolorum ab eos
-              nisi nemo et delectus facere! Sequi, voluptatum? Nostrum, tempora
-              ipsum.
+              My journey from a beginner to this stage has equipped me with a
+              deep understanding of HTML, CSS, and JavaScript, allowing me to
+              transform design concepts into interactive web applications.
             </div>
           </div>
         </div>

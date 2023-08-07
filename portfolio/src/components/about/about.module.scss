@@ -1,0 +1,27 @@
+.about {
+  height: 100%;
+  padding: 50px 25px;
+  max-width: 1340px;
+  margin: 0 auto;
+  color: #fff5ee;
+
+  &__contentWrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 70px;
+  }
+
+  &__line {
+    height: 2px;
+    background-color: #fff5ee;
+    width: 100%;
+    margin-bottom: 50px;
+  }
+
+  &__title {
+    font-size: 56px;
+    text-align: center;
+    border-bottom: 2px solid #fff5ee;
+    padding-bottom: 25px;
+  }
+}

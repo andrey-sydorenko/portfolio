@@ -1,0 +1,69 @@
+.interactiveCard {
+  width: 100%;
+  height: 750px;
+  transition: all 0.2s linear;
+  transition-property: box-shadow, transform;
+  transform-style: preserve-3d;
+  font-size: 25px;
+  color: #fff;
+  text-transform: uppercase;
+  position: relative;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  padding: 50px;
+  background: rgba(58, 100, 155, 0.1);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  z-index: 1;
+
+  &::before {
+    position: absolute;
+    content: "";
+    display: block;
+    left: 0;
+    top: 0;
+    z-index: 10;
+    height: 100%;
+    border-radius: 50px;
+    width: 100px;
+    background: linear-gradient(
+      90deg,
+      rgba(2, 0, 36, 1) 15%,
+      rgba(18, 9, 121, 1) 59%,
+      rgba(196, 0, 255, 0.8575805322128851) 77%,
+      rgba(255, 0, 202, 0.8379726890756303) 94%
+    );
+    filter: blur(85px);
+    z-index: -1;
+  }
+
+  &:hover {
+    .interactiveCard__text {
+      transform: translateX(10px) translateY(10px) translateZ(15px);
+    }
+  }
+
+  &__wrapper {
+    perspective: 1000px;
+    transform-style: preserve-3d;
+    position: relative;
+  }
+
+  &__content {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  &__text {
+    line-height: 1em;
+    text-transform: none;
+    margin: 0;
+    padding: 1em;
+    color: #fff;
+    transform: translateX(0) translateY(0) translateZ(1px);
+    transition: transform 400ms;
+    transform-style: preserve-3d;
+  }
+}

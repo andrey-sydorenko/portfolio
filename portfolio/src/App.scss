@@ -1,6 +1,9 @@
 #root {
   height: 100%;
 }
+* {
+  box-sizing: border-box;
+}
 
 .App {
   background-color: #161f27;

@@ -11,14 +11,29 @@ const Experience = () => {
   const [activeProject, setActiveProject] = useState<TProject>(PROJECTS[0]);
   const ref = useRef<HTMLDivElement | null>(null);
   const [isFixed, setIsFixed] = useState(false);
-  
+  const [isBottom, setIsBottom] = useState(false);
 
   useEffect(() => {
+    const experienceList = document.querySelectorAll(
+      "[data-id=experience-item]"
+    );
+    const lastItemHeight =
+      experienceList[experienceList.length - 1].clientHeight;
+
     const handleScroll = () => {
       if (ref.current && ref.current.getBoundingClientRect().top <= 50) {
         setIsFixed(true);
       } else {
         setIsFixed(false);
+      }
+
+      if (
+        ref.current &&
+        ref.current.getBoundingClientRect().bottom <= lastItemHeight
+      ) {
+        setIsBottom(true);
+      } else {
+        setIsBottom(false);
       }
     };
 
@@ -30,8 +45,10 @@ const Experience = () => {
       }
     };
 
-    const observer = new IntersectionObserver(handleObserve);
 
+    handleScroll();
+
+    const observer = new IntersectionObserver(handleObserve);
     observer.observe(ref.current as Element);
 
     document.addEventListener("scroll", handleScroll);
@@ -67,6 +84,7 @@ const Experience = () => {
                 {
                   [styles.experience__section_active]: isActive,
                   [styles.experience__section_fixed]: isFixed,
+                  [styles.experience__section_bottom]: isBottom,
                 },
               ])}
               key={id}
