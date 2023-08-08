@@ -6,6 +6,7 @@ import { PROJECTS, PROJECTS_EXPERIENCE } from "../../mockData/data";
 import { TProject } from "../../types/components";
 
 import styles from "./experience.module.scss";
+import Arrow from "../icons/Arrow";
 
 const Experience = () => {
   const [activeProject, setActiveProject] = useState<TProject>(PROJECTS[0]);
@@ -37,24 +38,10 @@ const Experience = () => {
       }
     };
 
-    const handleObserve = (entries: IntersectionObserverEntry[]) => {
-      const [entry] = entries;
-
-      if (entry.isIntersecting) {
-        ref.current?.classList.add(styles.experience__leftSide_active);
-      }
-    };
-
-
     handleScroll();
-
-    const observer = new IntersectionObserver(handleObserve);
-    observer.observe(ref.current as Element);
-
     document.addEventListener("scroll", handleScroll);
 
     return () => {
-      observer.disconnect();
       document.removeEventListener("scroll", handleScroll);
     };
   }, []);
@@ -75,8 +62,9 @@ const Experience = () => {
         className={styles.experience__leftSide}
       >
         {PROJECTS.map((item) => {
-          const { title, description, logo: Logo, id } = item;
+          const { title, description, link, id } = item;
           const isActive = id === activeProject.id;
+
           return (
             <div
               className={classNames([
@@ -90,7 +78,21 @@ const Experience = () => {
               key={id}
             >
               <div className={styles.experience__section_content}>
-                <div className={styles.experience__section_title}>{title}</div>
+                {link ? (
+                  <a
+                    className={styles.experience__section_link}
+                    href={link}
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    <span>{title}</span>
+                    <Arrow />
+                  </a>
+                ) : (
+                  <div className={styles.experience__section_title}>
+                    {title}
+                  </div>
+                )}
                 <div>{description}</div>
               </div>
             </div>

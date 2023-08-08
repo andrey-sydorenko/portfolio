@@ -6,6 +6,12 @@
   border-radius: 4px;
   color: #fff;
   font-size: 16px;
+  outline: none;
+  max-width: 600px;
+
+  &__error {
+    border-color: rgb(226, 69, 69) !important;
+  }
 
   &:hover {
     border-color: #fff;

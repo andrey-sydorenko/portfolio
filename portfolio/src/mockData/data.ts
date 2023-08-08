@@ -1,4 +1,16 @@
-import KILogoIcon from "../components/icons/KILogo";
+import Github from "./icons/Github";
+import Linkedin from "./icons/Linkedin";
+import Instagram from "./icons/Instagram";
+
+export const SOCIAL_NETWORKS = [
+  { id: 1, href: "https://github.com/andrey-sydorenko", Icon: Github },
+  {
+    id: 2,
+    href: "https://www.linkedin.com/in/andrey-sydorenko-ba5724200/",
+    Icon: Linkedin,
+  },
+  { id: 3, href: "https://www.instagram.com/rey.nko/", Icon: Instagram },
+];
 
 export const PROJECTS = [
   {
@@ -6,54 +18,54 @@ export const PROJECTS = [
     title: "Kyiv Independent",
     description:
       "News platform or publication based in Ukraine that delivers news, updates, and information in the English language. It caters to both local and international audiences, providing insights into various aspects of Ukrainian society, culture, politics, economy, and current events. The outlet serves as a valuable resource for English-speaking readers interested in staying informed about developments and stories unfolding in Ukraine.",
-    logo: KILogoIcon,
+    link: "https://kyivindependent.com/",
   },
   {
     id: 2,
     title: "Webway",
-    logo: KILogoIcon,
+    link: "",
     description:
       "The safe buying and selling project is an online platform that provides secure and reliable transaction services between buyers and sellers. The main objective of the project is to reduce the risks of fraud and dishonest actions, establish trust between the parties, and ensure a high level of security during operations.",
   },
   {
     id: 3,
     title: "AMT - Recon Pro 360",
-    logo: KILogoIcon,
+    link: "https://amt.company/reconpro/",
     description:
       "This app allows users to schedule appointments for car repairs, maintenance, or inspections, providing a seamless and convenient way to manage their vehicle's needs. Users can access information about available services, view pricing, and select the desired options through the app.",
   },
   {
     id: 4,
     title: "Incard",
-    logo: KILogoIcon,
+    link: "https://www.incard.co/",
     description:
       "Digital platform designed to allow users to sign up and create accounts within a bank or financial institution. Through this application, potential customers can enter their personal information, identification details, and other required data to initiate the account opening process. It simplifies and streamlines the traditional in-person registration process, making it more convenient and accessible for individuals to join the banking system and start using the financial services offered by the institution.",
   },
   {
     id: 5,
     title: "Finixio",
-    logo: KILogoIcon,
+    link: "https://finixio.com/",
     description:
       "WordPress plugins that provide the ability to show data in charts and tables are powerful tools for visualizing information on a website. These plugins allow users to create interactive and informative charts, graphs, and tables without the need for complex coding.",
   },
   {
     id: 6,
     title: "Avtologistika",
-    logo: KILogoIcon,
+    link: "",
     description:
       "With the help of this website, users can easily and conveniently order car transportation within Ukraine",
   },
   {
     id: 7,
     title: "Yohouse",
-    logo: KILogoIcon,
+    link: "",
     description:
       "Professional online platform that offers a wide array of services related to home construction and building projects. It serves as a reliable hub for individuals and businesses seeking expert assistance in designing, planning, and executing their dream homes. The website showcases a portfolio of completed projects, providing design inspirations and construction ideas.",
   },
   {
     id: 9,
     title: "Muscle & Motion Web App",
-    logo: KILogoIcon,
+    link: "https://app.yoga.muscleandmotion.com/",
     description:
       "Muscle and Motion is an interactive and educational website that focuses on providing in-depth knowledge of human anatomy, biomechanics, and exercise physiology. Through a combination of high-quality videos, 3D animations, and detailed explanations, the platform offers a comprehensive understanding of how muscles work, move, and interact during different exercises and movements.",
   },
@@ -87,7 +99,7 @@ export const PROJECTS_EXPERIENCE = [
     parentId: 2,
     date: {
       start: "January, 2021",
-      end: "Present",
+      end: "July, 2023",
     },
     description:
       "As a developer on the buy and sell project, I played a crucial role in crafting an online marketplace that facilitated seamless transactions between buyers and sellers. My responsibilities encompassed creating intuitive user interfaces, implementing secure payment gateways, and integrating reliable shipping and tracking systems.",

@@ -11,6 +11,34 @@
     gap: 70px;
   }
 
+  &__formWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    &_btn {
+      border-radius: 8px;
+      background-color: rgba(0, 255, 255, 0.5);
+      border: none;
+      color: #fff;
+      padding: 15px 8px;
+      max-width: 200px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.2s ease-out;
+      font-weight: 600;
+
+      &:disabled {
+        cursor: not-allowed;
+        background-color: rgba(0, 255, 255, 0.3);
+      }
+
+      &:hover {
+        background-color: rgba(0, 255, 255, 0.7);
+      }
+    }
+  }
+
   &__line {
     height: 2px;
     background-color: #fff5ee;

@@ -1,8 +1,10 @@
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.scss";
 import Hero from "./components/hero/Hero";
 import Experience from "./components/experience/Experience";
 import About from "./components/about/About";
+import { NotificationContainer } from "react-notifications";
+import "react-notifications/lib/notifications.css";
 
 function App() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -27,9 +29,10 @@ function App() {
   return (
     <div className="App">
       {/* <div className="App__background" style={{ background: gradient }} /> */}
-        <Hero />
-        <Experience />
-        <About />
+      <Hero />
+      <Experience />
+      <About />
+      <NotificationContainer />
     </div>
   );
 }

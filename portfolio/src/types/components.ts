@@ -1,6 +1,6 @@
 export type TProject = {
-    title: string;
-    id: number;
-    description: string;
-    logo: () => React.ReactNode;
-}
+  title: string;
+  id: number;
+  description: string;
+  link: string;
+};

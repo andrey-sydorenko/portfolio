@@ -1,8 +1,7 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import classNames from "classnames";
-import debounce from "lodash.debounce";
 import { TProject } from "../../../../types/components";
-import { PROJECTS, PROJECTS_EXPERIENCE } from "../../../../mockData/data";
+import { PROJECTS } from "../../../../mockData/data";
 
 import styles from "./projectsExperienceItem.module.scss";
 
@@ -13,6 +12,10 @@ interface ProjectsExperienceItemProps {
     parentId: number;
     technologies: { label: string; href: string }[];
     description: string;
+    date: {
+      start: string;
+      end: string;
+    };
   };
   setActiveProject: (a: TProject) => void;
   currentProject: TProject;
@@ -24,7 +27,7 @@ const ProjectsExperienceItem = ({
   currentProject,
 }: ProjectsExperienceItemProps) => {
   const ref = useRef<HTMLDivElement | null>(null);
-  const { title, technologies, description, parentId, id } = item;
+  const { title, technologies, description, parentId, date } = item;
 
   const activeProject =
     PROJECTS.find(({ id }) => id === parentId) || PROJECTS[0];
@@ -77,6 +80,9 @@ const ProjectsExperienceItem = ({
       ])}
     >
       <div className={styles.experienceItem__title}>{title}</div>
+      <div className={styles.experienceItem__date}>
+        {date.start} - {date.end}
+      </div>
       <div className={styles.experienceItem__description}>{description}</div>
       <div className={styles.experienceItem__technologies}>
         {technologies.map((item) => {
