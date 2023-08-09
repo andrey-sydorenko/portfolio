@@ -1,6 +1,11 @@
 #root {
   height: 100%;
 }
+
+html {
+  overflow-x: hidden;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -9,28 +14,16 @@
   background-color: #161f27;
   height: 100%;
   width: 100%;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
+  z-index: 1;
 
   &__background {
     height: calc(100% + 100px);
     pointer-events: none;
     width: 100%;
     position: fixed;
+    z-index: 2;
     top: -100px;
     left: 0;
-    z-index: 10;
   }
-
-  // &::before {
-  //   content: ' ';
-  //   display: block;
-  //   position: fixed;
-  //   left: -50px;
-  //   top: 0;
-  //   width: 150px;
-  //   height: 100vh;
-  //   border-radius: 50% 0;
-  //   filter: blur(75px);
-  //   background: linear-gradient(90deg, rgba(2,0,36,1) 6%, rgba(9,9,121,1) 38%, rgba(184,0,255,0.8575805322128851) 81%, rgba(145,0,255,0.8379726890756303) 97%);
-  // }
 }

@@ -5,16 +5,34 @@
   margin: 0 auto;
   color: #fff5ee;
 
+  @media (max-width: 575px) {
+    padding: 25px 15px;
+  }
+
   &__contentWrapper {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 70px;
+
+    @media (max-width: 991px) {
+      gap: 15px;
+    }
+
+    @media (max-width: 767px) {
+      display: flex;
+      flex-direction: column;
+    }
   }
 
   &__formWrapper {
     display: flex;
     flex-direction: column;
     gap: 15px;
+
+    @media (max-width: 767px) {
+      margin-bottom: 25px;
+      width: 100%;
+    }
 
     &_btn {
       border-radius: 8px;

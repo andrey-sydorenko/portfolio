@@ -10,6 +10,7 @@
   line-height: 1.4;
   font-size: 16px;
   font-weight: 200;
+  -webkit-tap-highlight-color: transparent;
 
   &:last-child {
     margin-bottom: 0;
@@ -17,6 +18,47 @@
 
   &__activeItem {
     transform: translateY(0);
+  }
+
+  &__expandBtn {
+    display: none;
+    align-items: center;
+    margin-bottom: 15px;
+    font-size: 14px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+
+    &_active {
+      svg {
+        transform: rotate(180deg);
+      }
+    }
+
+    svg {
+      fill: #fff;
+      width: 20px;
+      height: 20px;
+      margin-left: 5px;
+      transition: transform 0.2s ease-out;
+    }
+
+    @media (max-width: 991px) {
+      display: flex;
+    }
+  }
+
+  @media (max-width: 991px) {
+    background: rgba(58, 100, 155, 0.1);
+    border-radius: 8px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(7.7px);
+    opacity: 1;
+    transform: scale(1);
+
+    .experienceItem__title {
+      color: rgba(0, 255, 255, 0.7);
+    }
   }
 
   &:hover,
@@ -70,6 +112,50 @@
 
     &:hover {
       color: rgba(94, 234, 212, 1);
+    }
+  }
+
+  &__projectWrapper {
+    height: 0;
+    overflow: hidden;
+    transition: height 0.2s ease-out;
+  }
+
+  &__project {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+
+    &_link {
+      margin-bottom: 15px;
+      font-size: 24px;
+      text-transform: uppercase;
+      font-weight: 500;
+      text-decoration: none;
+      color: rgba(0, 255, 255, 0.7);
+      display: inline-block;
+
+      &:hover {
+        svg {
+          transform: translateY(0%);
+          transform: translateX(3px);
+        }
+      }
+
+      svg {
+        margin-left: 10px;
+        transform: translateY(25%);
+        width: 18px;
+        height: 18px;
+        transition: transform 0.2s ease-out;
+      }
+    }
+
+    &_title {
+      margin-bottom: 15px;
+      font-size: 24px;
+      text-transform: uppercase;
+      font-weight: 500;
     }
   }
 }

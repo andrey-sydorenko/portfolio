@@ -1,9 +1,11 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import classNames from "classnames";
 import { TProject } from "../../../../types/components";
 import { PROJECTS } from "../../../../mockData/data";
 
 import styles from "./projectsExperienceItem.module.scss";
+import ArrowSecondary from "../../../icons/ArrowSecondary";
+import Arrow from "../../../icons/Arrow";
 
 interface ProjectsExperienceItemProps {
   item: {
@@ -27,6 +29,9 @@ const ProjectsExperienceItem = ({
   currentProject,
 }: ProjectsExperienceItemProps) => {
   const ref = useRef<HTMLDivElement | null>(null);
+  const projectWrapperRef = useRef<HTMLDivElement | null>(null);
+  const projectRef = useRef<HTMLDivElement | null>(null);
+  const [isOpen, setIsOpen] = useState(false);
   const { title, technologies, description, parentId, date } = item;
 
   const activeProject =
@@ -49,7 +54,9 @@ const ProjectsExperienceItem = ({
     const observer = new IntersectionObserver(handleObserve);
     observer.observe(ref.current as Element);
 
-    document.addEventListener("scroll", handleScroll);
+    if (window.innerWidth >= 991) {
+      document.addEventListener("scroll", handleScroll);
+    }
 
     return () => {
       observer.disconnect();
@@ -59,15 +66,33 @@ const ProjectsExperienceItem = ({
 
   const isActive = currentProject.id === parentId;
 
-  const handleClick = () => {
-    const yOffset = -50;
-    const y =
-      (ref.current?.getBoundingClientRect().top || 0) +
-      window.scrollY +
-      yOffset;
-    window.scrollTo({ top: y, behavior: "smooth" });
-    setActiveProject(activeProject);
+  const toggleProject = () => {
+    setIsOpen((prev) => {
+      const elHeight = (projectRef.current?.clientHeight || 0) + 15;
+      if (projectWrapperRef.current) {
+        projectWrapperRef.current.style.height = !prev
+          ? `${elHeight}px` || "0px"
+          : "0px";
+      }
+      return !prev;
+    });
   };
+
+  const handleClick = () => {
+    if (window.innerWidth >= 991) {
+      const yOffset = -50;
+      const y =
+        (ref.current?.getBoundingClientRect().top || 0) +
+        window.scrollY +
+        yOffset;
+      window.scrollTo({ top: y, behavior: "smooth" });
+      setActiveProject(activeProject);
+    }
+  };
+
+  const expandTitle = isOpen
+    ? "Hide project description"
+    : "Show project description";
 
   return (
     <div
@@ -84,6 +109,42 @@ const ProjectsExperienceItem = ({
         {date.start} - {date.end}
       </div>
       <div className={styles.experienceItem__description}>{description}</div>
+      <div
+        onClick={toggleProject}
+        className={classNames([
+          styles.experienceItem__expandBtn,
+          { [styles.experienceItem__expandBtn_active]: isOpen },
+        ])}
+      >
+        <span>{expandTitle}</span>
+        <ArrowSecondary />
+      </div>
+      <div
+        ref={projectWrapperRef}
+        className={styles.experienceItem__projectWrapper}
+      >
+        <div ref={projectRef} className={styles.experienceItem__project}>
+          <div className={styles.experienceItem__project_content}>
+            {activeProject.link ? (
+              <a
+                className={styles.experienceItem__project_link}
+                href={activeProject.link}
+                rel="noreferrer"
+                target="_blank"
+              >
+                <span>{activeProject.title}</span>
+                <Arrow />
+              </a>
+            ) : (
+              <div className={styles.experienceItem__project_title}>
+                {activeProject.title}
+              </div>
+            )}
+            <div>{activeProject.description}</div>
+          </div>
+        </div>
+      </div>
+
       <div className={styles.experienceItem__technologies}>
         {technologies.map((item) => {
           return (

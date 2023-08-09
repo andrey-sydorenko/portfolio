@@ -19,11 +19,13 @@ const InteractiveCard = () => {
   }, [boxPosition]);
 
   const handleMouseMove = useCallback((e: React.MouseEvent) => {
-    const rect = ref.current?.getBoundingClientRect();
-    if (rect) {
-      const x = DEG_BIAS * ((e.clientX - rect.left) / rect.width - 0.5);
-      const y = -(DEG_BIAS * ((e.clientY - rect.top) / rect.height - 0.5));
-      setBoxPosition(() => ({ x, y, z: Z_TRANSLATE }));
+    if (window.innerWidth >= 991) {
+      const rect = ref.current?.getBoundingClientRect();
+      if (rect) {
+        const x = DEG_BIAS * ((e.clientX - rect.left) / rect.width - 0.5);
+        const y = -(DEG_BIAS * ((e.clientY - rect.top) / rect.height - 0.5));
+        setBoxPosition(() => ({ x, y, z: Z_TRANSLATE }));
+      }
     }
   }, []);
 

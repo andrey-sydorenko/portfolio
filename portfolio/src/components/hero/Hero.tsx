@@ -7,8 +7,46 @@ import ReactIcon from "../icons/React";
 import GithubIcon from "../icons/Github";
 import NodeJsIcon from "../icons/NodeJs";
 import VueIcon from "../icons/Vue";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 import styles from "./hero.module.scss";
+
+const settings = {
+  infinite: true,
+  slidesToShow: 7,
+  slidesToScroll: 1,
+  autoplay: true,
+  arrows: false,
+  speed: 2000,
+  autoplaySpeed: 2000,
+  pauseOnHover: false,
+  cssEase: "linear",
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 7,
+        slidesToScroll: 1,
+      },
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 4,
+        slidesToScroll: 1,
+      },
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 1,
+      },
+    },
+  ],
+};
 
 const Hero = () => {
   const nameRef = useRef<HTMLDivElement | null>(null);
@@ -95,6 +133,37 @@ const Hero = () => {
             <SassIcon />
           </div>
         </div>
+      </div>
+      <div className={styles.hero__sliderWrapper}>
+        <Slider {...settings}>
+          <div className={styles.hero__icon}>
+            <HtmlIcon />
+          </div>
+          <div className={styles.hero__icon}>
+            <CssIcon />
+          </div>
+          <div className={styles.hero__icon}>
+            <JsIcon />
+          </div>
+          <div className={styles.hero__icon}>
+            <SassIcon />
+          </div>
+          <div className={styles.hero__icon}>
+            <ReactIcon />
+          </div>
+          <div className={styles.hero__icon}>
+            <GithubIcon />
+          </div>
+          <div className={styles.hero__icon}>
+            <NodeJsIcon />
+          </div>
+          <div className={styles.hero__icon}>
+            <VueIcon />
+          </div>
+          <div className={styles.hero__icon}>
+            <SassIcon />
+          </div>
+        </Slider>
       </div>
       <div className={styles.hero__line} />
     </div>
