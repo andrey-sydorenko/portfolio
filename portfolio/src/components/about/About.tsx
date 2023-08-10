@@ -1,9 +1,10 @@
 import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
-import { createNotification } from "../../utils/notifications";
+import { createNotification } from "utils/notifications";
 
-import Input from "../shared/Input/Input";
+import Input from "components/shared/Input/Input";
 import InteractiveCard from "./components/InteractiveCard";
+import Button from "components/shared/Button/Button";
 
 import styles from "./about.module.scss";
 
@@ -12,6 +13,12 @@ const INITIAL_FORM_DATA = {
   user_email: "",
   message: "",
 };
+
+const FORM_FIELDS = [
+  { id: 1, name: "user_name", label: "Your Name", multiline: false },
+  { id: 2, name: "user_email", label: "Your E-mail", multiline: false },
+  { id: 3, name: "message", label: "Message", multiline: true },
+];
 
 const validate = (values: { [key: string]: string }) => {
   const errors = Object.entries(values).reduce((acc, [key, value]) => {
@@ -92,35 +99,21 @@ const About = () => {
           onSubmit={sendEmail}
           className={styles.about__formWrapper}
         >
-          <Input
-            onChange={handleChange}
-            value={formData.user_name}
-            error={errors["user_name"]}
-            name="user_name"
-            label="Your Name"
-          />
-          <Input
-            onChange={handleChange}
-            value={formData.user_email}
-            error={errors["user_email"]}
-            name="user_email"
-            label="Your E-mail"
-          />
-          <Input
-            onChange={handleChange}
-            value={formData.message}
-            error={errors["message"]}
-            name="message"
-            label="Message"
-            multiline
-          />
-          <button
-            disabled={isLoading}
-            type="submit"
-            className={styles.about__formWrapper_btn}
-          >
-            Send request
-          </button>
+          {FORM_FIELDS.map((item) => {
+            const { id, label, name, multiline } = item;
+            return (
+              <Input
+                key={id}
+                label={label}
+                name={name}
+                value={formData[name as "user_name"]}
+                error={errors[name as "user_name"]}
+                multiline={multiline}
+                onChange={handleChange}
+              />
+            );
+          })}
+          <Button disabled={isLoading} type="submit" label="Send request" />
         </form>
       </div>
       <div className={styles.about__line} />

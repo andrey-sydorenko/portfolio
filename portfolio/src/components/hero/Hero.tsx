@@ -1,17 +1,32 @@
 import { useEffect, useRef, memo } from "react";
-import CssIcon from "../icons/Css";
-import JsIcon from "../icons/Js";
-import HtmlIcon from "../icons/Html";
-import SassIcon from "../icons/Sass";
-import ReactIcon from "../icons/React";
-import GithubIcon from "../icons/Github";
-import NodeJsIcon from "../icons/NodeJs";
-import VueIcon from "../icons/Vue";
+
+import CssIcon from "components/icons/Css";
+import JsIcon from "components/icons/Js";
+import HtmlIcon from "components/icons/Html";
+import SassIcon from "components/icons/Sass";
+import ReactIcon from "components/icons/React";
+import GithubIcon from "components/icons/Github";
+import NodeJsIcon from "components/icons/NodeJs";
+import VueIcon from "components/icons/Vue";
+import TypescriptIcon from "components/icons/Typescript";
 import Slider from "react-slick";
+
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 import styles from "./hero.module.scss";
+
+const TECHNOLOGIES = [
+  { id: 1, Icon: CssIcon },
+  { id: 2, Icon: JsIcon },
+  { id: 3, Icon: HtmlIcon },
+  { id: 4, Icon: SassIcon },
+  { id: 5, Icon: ReactIcon },
+  { id: 6, Icon: GithubIcon },
+  { id: 7, Icon: NodeJsIcon },
+  { id: 8, Icon: VueIcon },
+  { id: 8, Icon: TypescriptIcon },
+];
 
 const settings = {
   infinite: true,
@@ -105,64 +120,24 @@ const Hero = () => {
         </video>
 
         <div className={styles.hero__circle}>
-          <div className={styles.hero__circle_item}>
-            <HtmlIcon />
-          </div>
-          <div className={styles.hero__circle_item}>
-            <CssIcon />
-          </div>
-          <div className={styles.hero__circle_item}>
-            <JsIcon />
-          </div>
-          <div className={styles.hero__circle_item}>
-            <SassIcon />
-          </div>
-          <div className={styles.hero__circle_item}>
-            <ReactIcon />
-          </div>
-          <div className={styles.hero__circle_item}>
-            <GithubIcon />
-          </div>
-          <div className={styles.hero__circle_item}>
-            <NodeJsIcon />
-          </div>
-          <div className={styles.hero__circle_item}>
-            <VueIcon />
-          </div>
-          <div className={styles.hero__circle_item}>
-            <SassIcon />
-          </div>
+          {TECHNOLOGIES.map(({ id, Icon }) => {
+            return (
+              <div key={id} className={styles.hero__circle_item}>
+                <Icon />
+              </div>
+            );
+          })}
         </div>
       </div>
       <div className={styles.hero__sliderWrapper}>
         <Slider {...settings}>
-          <div className={styles.hero__icon}>
-            <HtmlIcon />
-          </div>
-          <div className={styles.hero__icon}>
-            <CssIcon />
-          </div>
-          <div className={styles.hero__icon}>
-            <JsIcon />
-          </div>
-          <div className={styles.hero__icon}>
-            <SassIcon />
-          </div>
-          <div className={styles.hero__icon}>
-            <ReactIcon />
-          </div>
-          <div className={styles.hero__icon}>
-            <GithubIcon />
-          </div>
-          <div className={styles.hero__icon}>
-            <NodeJsIcon />
-          </div>
-          <div className={styles.hero__icon}>
-            <VueIcon />
-          </div>
-          <div className={styles.hero__icon}>
-            <SassIcon />
-          </div>
+          {TECHNOLOGIES.map(({ id, Icon }) => {
+            return (
+              <div key={id} className={styles.hero__icon}>
+                <Icon />
+              </div>
+            );
+          })}
         </Slider>
       </div>
       <div className={styles.hero__line} />

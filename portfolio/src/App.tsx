@@ -6,6 +6,7 @@ import { NotificationContainer } from "react-notifications";
 
 import "react-notifications/lib/notifications.css";
 import "./App.scss";
+import Footer from "./components/footer/Footer";
 
 function App() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -33,6 +34,7 @@ function App() {
       <Hero />
       <Experience />
       <About />
+      <Footer />
       <NotificationContainer />
     </div>
   );

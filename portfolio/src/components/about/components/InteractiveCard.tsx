@@ -1,6 +1,8 @@
-import classNames from "classnames";
 import { useCallback, useRef, useState, useMemo, memo } from "react";
-import { SOCIAL_NETWORKS } from "../../../mockData/data";
+import classNames from "classnames";
+
+import { SOCIAL_NETWORKS } from "mockData/data";
+
 import styles from "./interactiveCard.module.scss";
 
 const DEG_BIAS = 40;

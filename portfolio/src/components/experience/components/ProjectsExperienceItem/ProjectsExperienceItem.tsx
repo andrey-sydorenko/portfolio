@@ -1,11 +1,12 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import classNames from "classnames";
-import { TProject } from "../../../../types/components";
-import { PROJECTS } from "../../../../mockData/data";
+import ArrowSecondary from "components/icons/ArrowSecondary";
+import Arrow from "components/icons/Arrow";
+
+import { TProject } from "types/components";
+import { PROJECTS } from "mockData/data";
 
 import styles from "./projectsExperienceItem.module.scss";
-import ArrowSecondary from "../../../icons/ArrowSecondary";
-import Arrow from "../../../icons/Arrow";
 
 interface ProjectsExperienceItemProps {
   item: {
@@ -79,15 +80,17 @@ const ProjectsExperienceItem = ({
   };
 
   const handleClick = () => {
-    if (window.innerWidth >= 991) {
-      const yOffset = -50;
-      const y =
-        (ref.current?.getBoundingClientRect().top || 0) +
-        window.scrollY +
-        yOffset;
-      window.scrollTo({ top: y, behavior: "smooth" });
-      setActiveProject(activeProject);
+    if (window.innerWidth <= 991) {
+      return;
     }
+
+    const yOffset = -50;
+    const y =
+      (ref.current?.getBoundingClientRect().top || 0) +
+      window.scrollY +
+      yOffset;
+    window.scrollTo({ top: y, behavior: "smooth" });
+    setActiveProject(activeProject);
   };
 
   const expandTitle = isOpen

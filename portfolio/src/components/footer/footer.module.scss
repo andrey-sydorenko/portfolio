@@ -1,0 +1,57 @@
+.footer {
+  max-width: 1340px;
+  margin: 0 auto;
+  padding: 0 25px 50px 25px;
+  color: #fff5ee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  &__mail {
+    font-size: 36px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 40px;
+    transition: color 0.2s ease-out;
+
+    &:hover {
+      color: rgba(0, 255, 255, 0.7);
+    }
+
+    @media (max-width: 575px) {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+  }
+
+  &__resumeLink {
+    text-decoration: none;
+    font-size: 24px;
+    color: #fff5ee;
+    display: flex;
+    align-items: center;
+    margin: 40px 0;
+    transition: color 0.2s ease-out;
+
+    &:hover {
+      color: rgba(0, 255, 255, 0.7);
+
+      svg {
+        transform: translate(5px, 0);
+      }
+    }
+
+    svg {
+      width: 24px;
+      height: 24px;
+      transform: translateY(15%);
+      transition: transform 0.2s ease-out;
+    }
+
+    @media (max-width: 575px) {
+      font-size: 24px;
+      margin: 20px 0;
+    }
+  }
+}
