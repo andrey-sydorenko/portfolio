@@ -98,7 +98,7 @@ const Hero = () => {
           <img
             ref={photoRef}
             alt="profilePhoto"
-            src="/template.png"
+            src="/photo.png"
             className={styles.hero__photo}
           />
           <div>
